@@ -1,7 +1,15 @@
 plugins { id 'com.android.application' }
 android {
-    namespace 'com.example.djjd'
+    namespace 'com.example.focustimer'
     compileSdk 34
-    defaultConfig { applicationId "com.example.djjd"; minSdk 21; targetSdk 34 }
+    defaultConfig {
+        applicationId "com.example.focustimer"
+        minSdk 21
+        targetSdk 34
+    }
+    buildFeatures { viewBinding true }
 }
-dependencies { implementation 'androidx.appcompat:appcompat:1.6.1' }
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+}

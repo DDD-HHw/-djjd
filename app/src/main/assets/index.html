@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>专注计时器</title>
+<style>
+body { font-family: Arial; text-align: center; padding: 40px; background: #1a1a2e; color: white; }
+h1 { font-size: 48px; margin-top: 20px; }
+button { font-size: 24px; padding: 15px 40px; margin: 10px; border: none; border-radius: 50px; cursor: pointer; }
+#startBtn { background: #16a085; color: white; }
+#resetBtn { background: #e74c3c; color: white; }
+#timer { font-size: 72px; font-weight: bold; letter-spacing: 5px; }
+</style>
+</head>
+<body>
+<h2>⏳ 专注计时器</h2>
+<div id="timer">25:00</div>
+<div>
+    <button id="startBtn">开始</button>
+    <button id="resetBtn">重置</button>
+</div>
+<script>
+let totalSeconds = 1500, interval = null, isRunning = false;
+const timerEl = document.getElementById('timer');
+function updateDisplay() {
+    let m = Math.floor(totalSeconds / 60), s = totalSeconds % 60;
+    timerEl.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+document.getElementById('startBtn').onclick = function() {
+    if (isRunning) return;
+    isRunning = true;
+    interval = setInterval(() => {
+        if (totalSeconds <= 0) { clearInterval(interval); isRunning = false; alert('时间到！'); return; }
+        totalSeconds--;
+        updateDisplay();
+    }, 1000);
+};
+document.getElementById('resetBtn').onclick = function() {
+    clearInterval(interval); isRunning = false;
+    totalSeconds = 1500; updateDisplay();
+};
+updateDisplay();
+</script>
+</body>
+</html>
