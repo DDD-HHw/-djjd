@@ -1,0 +1,7 @@
+plugins { id 'com.android.application' }
+android {
+    namespace 'com.example.djjd'
+    compileSdk 34
+    defaultConfig { applicationId "com.example.djjd"; minSdk 21; targetSdk 34 }
+}
+dependencies { implementation 'androidx.appcompat:appcompat:1.6.1' }
